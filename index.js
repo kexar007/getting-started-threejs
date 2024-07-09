@@ -9,8 +9,6 @@ const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
 camera.position.z = 5;
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(w, h);
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.outputColorSpace = THREE.SRGBColorSpace;
 document.body.appendChild(renderer.domElement);
 
 const ctrls = new OrbitControls(camera, renderer.domElement);
