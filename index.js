@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import getLayer from "../libs/bobbyroe/getLayer.js";
+import getLayer from "./getLayer.js";
 
 const w = window.innerWidth;
 const h = window.innerHeight;
