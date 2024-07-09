@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import getLayer from "./getLayer.js";
+import { OrbitControls } from "jsm/controls/OrbitControls.js";
 
 const w = window.innerWidth;
 const h = window.innerHeight;
@@ -11,6 +12,9 @@ renderer.setSize(w, h);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 document.body.appendChild(renderer.domElement);
+
+const ctrls = new OrbitControls(camera, renderer.domElement);
+ctrls.enableDamping = true;
 
 const geometry = new THREE.BoxGeometry();
 const material = new THREE.MeshStandardMaterial({
@@ -38,6 +42,7 @@ function animate() {
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.02;
   renderer.render(scene, camera);
+  ctrls.update();
 }
 
 animate();
