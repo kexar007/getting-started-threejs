@@ -35,26 +35,31 @@ const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(10,20,5);
 const ambientLight = new THREE.AmbientLight(0xffffff);
 const pointLightHelper = new THREE.PointLightHelper(pointLight);
-scene.add(pointLight,ambientLight,pointLightHelper);
+scene.add(pointLight,/* ambientLight */pointLightHelper);
 
 const gridhelper = new THREE.GridHelper(100,50);
 scene.add(gridhelper);
 
 const controls= new OrbitControls(camera,renderer.domElement);
 
-//function to add stars
 
+
+//function to add stars
 
 function addstars(){
     const geometry= new THREE.SphereGeometry(0.25,24,24);
     const material= new THREE.MeshBasicMaterial({color:0xffffff});
     const star = new THREE.Mesh(geometry,material);
-    const[x,y,z]=Array(3).fill().map(()=> THREE.MathUtils.randFloatSpread(200));
+    const[x,y,z]=Array(3).fill().map(()=> THREE.MathUtils.randFloatSpread(300));
     star.position.set(x,y,z);
    scene.add(star);
 }
+Array(300).fill().forEach(addstars);
 
-Array(500).fill().forEach(addstars);
+//adding space bg
+const spacetexture= new THREE.TextureLoader().load("space.png");
+scene.background=spacetexture;
+
 
 
 function animate(){
