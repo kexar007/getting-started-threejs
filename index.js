@@ -23,9 +23,9 @@ const scene = new THREE.Scene()
 
 
 
-const geometry = new THREE.TorusGeometry(10,3,16,100);
+const geometry = new THREE.TorusGeometry(15,4,16,50);
 const material = new THREE.MeshStandardMaterial({
-    color: 'brown', /* wireframe:true */
+    color: 'orange',  /* wireframe:true */ 
 });
 
 const torus = new THREE.Mesh(geometry,material);
@@ -59,8 +59,13 @@ Array(300).fill().forEach(addstars);
 //adding space bg
 const spacetexture= new THREE.TextureLoader().load("space.png");
 scene.background=spacetexture;
-
-
+// add avatar 
+const jefftexture = new THREE.TextureLoader().load('jeff.jpg');
+const jeff = new THREE.Mesh(
+    new THREE.BoxGeometry(3,3,3),
+    new THREE.MeshBasicMaterial({map:jefftexture})
+);
+scene.add(jeff);
 
 function animate(){
   requestAnimationFrame(animate);
