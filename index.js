@@ -47,7 +47,7 @@ scene.add(pointLight,/* ambientLight */pointLightHelper);
 const gridhelper = new THREE.GridHelper(100,50);
 //scene.add(gridhelper);
 
-const controls= new OrbitControls(camera,renderer.domElement);
+//const controls= new OrbitControls(camera,renderer.domElement);
 
 
 
@@ -112,12 +112,16 @@ moveCamera();
 
 function animate(){
   requestAnimationFrame(animate);
-    torus.rotation.x+= 0.01;
-    torus.rotation.y+= 0.03;
-   // torus.rotation.z+= 0.003;
-   //controls.update();
 
-  renderer.render(scene,camera);
+  torus.rotation.x += 0.01;
+  torus.rotation.y += 0.005;
+  torus.rotation.z += 0.01;
+
+  moon.rotation.x += 0.005;
+
+  // controls.update();
+
+  renderer.render(scene, camera);
 }
 
 animate() 
