@@ -2,22 +2,14 @@ import * as THREE from 'three';
 import { OrbitControls } from "jsm/controls/OrbitControls.js";
 
 
-
+//renderer
 const w = window.innerWidth;
 const h = window.innerHeight;
-/* const renderer = new THREE.WebGLRenderer({
-  canvas: document.querySelector('#bg')
-}); */
-/* renderer.setSize(w,h); */
-
-/* document.body.appendChild(renderer.domElement); */
-
 const canvas = document.getElementById('canvas');
-
 const renderer = new THREE.WebGLRenderer({ canvas: canvas });
 renderer.setSize(w,h);
 
-
+//camera
 const fov=75;
 const aspect=w/h;
 const near=0.1;
@@ -25,7 +17,7 @@ const far=1000;
 const camera = new THREE.PerspectiveCamera(fov,aspect,near,far);
 camera.position.z= 40;
 
-
+//scene
 const scene = new THREE.Scene() 
 
 
@@ -38,21 +30,20 @@ const material = new THREE.MeshStandardMaterial({
 const torus = new THREE.Mesh(geometry,material);
 scene.add(torus);
 
+//lighting
+
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(10,20,20);
 const ambientLight = new THREE.AmbientLight(0xffffff);
 const pointLightHelper = new THREE.PointLightHelper(pointLight);
 scene.add(pointLight,/* ambientLight */pointLightHelper);
 
-const gridhelper = new THREE.GridHelper(100,50);
+//const gridhelper = new THREE.GridHelper(100,50);
 //scene.add(gridhelper);
-
 //const controls= new OrbitControls(camera,renderer.domElement);
 
 
-
 //function to add stars
-
 function addstars(){
     const geometry= new THREE.SphereGeometry(0.25,24,24);
     const material= new THREE.MeshBasicMaterial({color:0xffffff});
@@ -66,6 +57,7 @@ Array(300).fill().forEach(addstars);
 //adding space bg
 const spacetexture= new THREE.TextureLoader().load("space.jpg");
 scene.background=spacetexture;
+
 // add avatar 
 const jefftexture = new THREE.TextureLoader().load('jeff.jpg');
 const jeff = new THREE.Mesh(
@@ -83,15 +75,15 @@ const moon = new THREE.Mesh(
   )
 )
 scene.add(moon);
+
 // correct positions
 moon.position.z = 30;
 moon.position.setX(-10);
-
 jeff.position.z = -5;
 jeff.position.x = 2;
 
-// camera move on scroll
 
+// camera move on scroll
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
