@@ -1,11 +1,10 @@
-@import url("https://use.typekit.net/jmk3xov.css");
 
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
+
+#canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
 }
-
 
 :root {
   --dark-bg: rgba(15, 15, 15, 0.95);
@@ -19,7 +18,7 @@ canvas {
 
 main {
   width: 100vw;
-  color: white;
+  color: rgb(54, 27, 27);
   z-index: 99;
   position: absolute;
   width: 100%;

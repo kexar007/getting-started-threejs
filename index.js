@@ -1,4 +1,3 @@
-import './style.css';
 import * as THREE from 'three';
 import { OrbitControls } from "jsm/controls/OrbitControls.js";
 
@@ -6,10 +5,17 @@ import { OrbitControls } from "jsm/controls/OrbitControls.js";
 
 const w = window.innerWidth;
 const h = window.innerHeight;
-const renderer = new THREE.WebGLRenderer({antialias:true});
-renderer.setSize(w,h);
-document.body.appendChild(renderer.domElement)
+/* const renderer = new THREE.WebGLRenderer({
+  canvas: document.querySelector('#bg')
+}); */
+/* renderer.setSize(w,h); */
 
+/* document.body.appendChild(renderer.domElement); */
+
+const canvas = document.getElementById('canvas');
+
+const renderer = new THREE.WebGLRenderer({ canvas: canvas });
+renderer.setSize(w,h);
 
 
 const fov=75;
