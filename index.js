@@ -71,7 +71,7 @@ scene.add(jeff);
 const moontexture = new THREE.TextureLoader().load('moon.png');
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(7,32,32),
-  new THREE.MeshStandardMaterial(
+  new THREE.MeshBasicMaterial(
     {map:moontexture}
   )
 )
